@@ -1,0 +1,56 @@
+environment: dev
+
+## Application confs
+### Port
+appPort: 3000
+
+### min number pods
+minReplicas: 1
+
+### Container size (request/limits)
+resources:
+  limits:
+    cpu: 500m
+    memory: 500Mi
+  requests:
+    cpu: 200m
+    memory: 150Mi
+
+## AWS IAM Role
+### Application needs integration with AWS services (via API calls) 
+arnIAMrole: "arn:aws:iam::510338013850:role/gpa-mp-poc-typeorm"
+
+## Container image confs
+image:
+  tag: dev
+
+## Enviroment variables
+extraEnv: 
+  - name: NODE_ENV
+    value: development
+  - name: DS_HOST
+    value: mp-db-dev.fcd.gpa.digital
+  - name: DS_PORT
+    value: "5432"
+  - name: DS_USER
+    value: app_meuspremios
+  - name: DS_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: gpa-mp-fidelity-multiple-api-secrets
+        key: DS_PASSWORD
+  - name: DS_NAME
+    value: gpameudescontoprd
+
+## Volumes
+volumes:
+  - name: ecom-cert-volume
+    secret:
+      secretName: ecom-cert
+
+
+## Volume mounts
+volumeMounts:
+  - mountPath: /certificado
+    name: ecom-cert-volume
+    readOnly: true
