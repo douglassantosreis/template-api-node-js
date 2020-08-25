@@ -17,7 +17,7 @@ node {
         checkout scm
     }
     stage('Build Docker Image') {
-        // Necessario para conseguir baixar a imagem base 610462181037.dkr.ecr.us-east-1.amazonaws.com/gpa-microservices
+        // Necessario para conseguir baixar a imagem base XXXXXXX.dkr.ecr.us-east-1.amazonaws.com/microservices
         sh 'aws ecr get-login --region us-east-1 --no-include-email --registry-ids 610462181037 | sh -'
         sh "docker build -t ${project_repo}:latest ."
     }

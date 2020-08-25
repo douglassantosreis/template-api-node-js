@@ -18,7 +18,7 @@ resources:
 
 ## AWS IAM Role
 ### Application needs integration with AWS services (via API calls) 
-arnIAMrole: "arn:aws:iam::XXXXXXXXXXXXXX:role/gpa-mp-poc-typeorm"
+arnIAMrole: "arn:aws:iam::XXXXXXXXXXXXXX:role/mp-poc-typeorm"
 
 ## Container image confs
 image:
