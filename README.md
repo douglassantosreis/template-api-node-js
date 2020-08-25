@@ -1,6 +1,5 @@
 # Rodando o Projeto
 
-1. Estar conectado na VPN para que a aplicação tenha acesso ao banco
 1. Instalar as dependências:
     ```
         npm install
