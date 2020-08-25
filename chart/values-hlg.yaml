@@ -18,7 +18,7 @@ resources:
 
 ## AWS IAM Role
 ### Application needs integration with AWS services (via API calls) 
-arnIAMrole: "arn:aws:iam::510338013850:role/gpa-mp-poc-typeorm"
+arnIAMrole: "arn:aws:iam::XXXXXXXXXXXX:role/gpa-mp-poc-typeorm"
 
 ## Container image confs
 image:
@@ -29,27 +29,15 @@ extraEnv:
   - name: NODE_ENV
     value: homologation
   - name: DS_HOST
-    value: mp-db-dev.fcd.gpa.digital
+    value: host
   - name: DS_PORT
     value: "5432"
   - name: DS_USER
-    value: app_meuspremios
+    value: user
   - name: DS_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: gpa-mp-member-get-member-api-secrets
+        name: secrets
         key: DS_PASSWORD
   - name: DS_NAME
-    value: gpameudescontoprd
-
-## Volumes
-volumes:
-  - name: ecom-cert-volume
-    secret:
-      secretName: ecom-cert
-
-## Volume mounts
-volumeMounts:
-  - mountPath: /certificado
-    name: ecom-cert-volume
-    readOnly: true
+    value: dsname
