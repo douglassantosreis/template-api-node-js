@@ -29,27 +29,15 @@ extraEnv:
   - name: NODE_ENV
     value: production
   - name: DS_HOST
-    value: mp-db-prod.fcd.gpa.digital
+    value: host
   - name: DS_PORT
     value: "5432"
   - name: DS_USER
-    value: app_meuspremios
+    value: user
   - name: DS_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: gpa-mp-member-get-member-api-secrets
+        name: secret
         key: DS_PASSWORD
   - name: DS_NAME
-    value: gpameudescontoprd
-
-## Volumes
-volumes:
-  - name: ecom-cert-volume
-    secret:
-      secretName: ecom-cert
-
-## Volume mounts
-volumeMounts:
-  - mountPath: /certificado
-    name: ecom-cert-volume
-    readOnly: true
+    value: dsname
